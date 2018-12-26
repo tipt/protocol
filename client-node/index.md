@@ -2,7 +2,7 @@
 Tipt clients communicate with Tipt nodes using the following protocol specification.
 
 ## Introduction
-Each client must connect with a node using a secure WebSocket on port 443. Invalid SSL certificates must not be accepted.
+Each client must connect with a node using a secure WebSocket on port 443 on the endpoint `/ws`. Invalid SSL certificates must not be accepted.
 
 The node must never reject connections on grounds other than overloading, maintenance or internal errors. Any rejected connection should receive an HTTP 5xx status code as response.
 
@@ -17,18 +17,24 @@ Naturally, if using a smaller data type in the encoded msgpack blob than the one
 
 Every request must adhere to the following format:
 ```
-{
-    ver   str8
-          The semantic version number of this specification.
-    id    uint8
-          The id of the request to be included in the response. This value must
-          only be reused when a response has been issued for the respective
-          request.
-          This value is only unique per directional request, i.e. the same
-          value may be used in a client-node and node-client request
-          simultaneously without any side-effects.
-    pakt  CNPacketType
-    reqt  ?
-          See CNPacketType for type.
+map {
+    id      uint8
+            The id of the request to be included in the response. This value
+            must only be reused when a response has been issued for the
+            respective request.
+            This value is only unique per directional request, i.e. the same
+            value may be used in a client-node and node-client request
+            simultaneously without any side-effects.
+    pakt    CNPacketType
+    reqt    ?
+            See CNPacketType for type.
+    [body]  ?
+            The type and format is determined by the respective entries
+            referenced by the type of `reqt`.
+            If `pakt` is `RESPONSE` this value must be left out if the response
+            is an error.
+    [err]   CNNodeResponseError | CNClientResponseError
+            This field must only be present if `reqt` is `RESPONSE` and the
+            response has errored.
 }
 ```
