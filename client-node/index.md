@@ -34,7 +34,7 @@ map {
             If `pakt` is `RESPONSE` this value must be left out if the response
             is an error.
     [err]   CNNodeResponseError | CNClientResponseError
-            This field must only be present if `reqt` is `RESPONSE` and the
+            This field must only be present if `pakt` is `RESPONSE` and the
             response has errored.
 }
 ```
