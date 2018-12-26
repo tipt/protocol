@@ -1,2 +1,2 @@
-# protocol
-A specification of all Tipt networking protocols
+# Tipt specification
+A specification of all Tipt networking protocols and formats
