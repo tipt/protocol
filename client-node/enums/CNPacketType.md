@@ -15,5 +15,5 @@ positive fixint (max 127)
 0x02    EVENT
         Sent when one party has information for the other party which is not
         sent as part of a response. No response is needed.
-        When set, `/reqt` must be a `CNClientEventType` or `CNNodeRequestType`.
+        When set, `/reqt` must be a `CNClientEventType` or `CNNodeEventType`.
 ```
