@@ -6,6 +6,8 @@ map {
     ver   str8
           The semantic version number of this specification as used by the
           client.
+          Max size: 64 bytes
+          Encoding: ASCII
 }
 ```
 
@@ -16,6 +18,8 @@ map {
     ver   str8
           The semantic version number of this specification as used by the
           node.
+          Max size: 64 bytes
+          Encoding: ASCII
 
     comp  bool
           Whether the node is compatible with the client version.

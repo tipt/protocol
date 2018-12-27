@@ -15,7 +15,9 @@ Every single request must be formatted according to the msgpack specification. A
 
 Naturally, if using a smaller data type in the encoded msgpack blob than the one specified in the specification is possible this should be done. E.g. if the specification says to use int16, an int16 should be used by the program, but when encoding it may be turned into an int8 or a positive fixint if the value permits doing so.
 
-Every request must adhere to the following format:
+No request may be any bigger than 2.1MB. If a request exceeds this size, the node may disconnect the client with an HTTP 400 status.
+
+Every WebSocket request must adhere to the following format:
 ```
 map {
     id      uint8

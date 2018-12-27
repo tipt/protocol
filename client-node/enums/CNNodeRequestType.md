@@ -20,6 +20,8 @@ positive fixint (max 127)
 0x04-0x1f               Reserved for future requests made by clients that
                         have not signed in
 
-0x20    FORWARD         The client requests that a message be forwarded to
+0x20 	GET_NODE_KEY	Obtains a node's OpenPGP public key
+
+0x21    FORWARD         The client requests that a message be forwarded to
                         another node.
 ```
