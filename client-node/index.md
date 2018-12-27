@@ -30,7 +30,7 @@ map {
     pakt    CNPacketType
     reqt    ?
             See CNPacketType for type.
-    [body]  ?
+    [body]  niil | map
             The type and format is determined by the respective entries
             referenced by the type of `reqt`.
             If `pakt` is `RESPONSE` this value must be left out if the response

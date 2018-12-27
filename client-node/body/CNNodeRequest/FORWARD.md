@@ -23,6 +23,13 @@ map {
 ## Response
 `body` must be `nil` if `wait` is `false` in the request.
 
-Otherwise the node must wait for the recipient node to respond and then forward that as a `bin32` in `body`.
+Otherwise the node must wait for the recipient node to respond and then reply with the following `body`:
+```
+map {
+    resp  bin32
+          The response from the recipient node
+          Max size: 2MB
+}
+```
 
-In order to forward the request, the node must send the request `msg` as a payload in a POST request to the domain name specified in the request `node` parameter at the path `/api/forward`.
+In order to forward the request, the node must send the request `msg` as a payload in a POST HTTP request to the domain name specified in the request `node` parameter at the path `/api/forward`.
